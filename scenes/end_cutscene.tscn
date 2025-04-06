@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://0yomjphebeo7"]
+
+[ext_resource type="Theme" uid="uid://d2ku7dnmcq75d" path="res://assets/menu.tres" id="1_0d6rw"]
+[ext_resource type="Script" uid="uid://bmw38jt4hxlmd" path="res://scripts/end_cutscene.gd" id="2_0d6rw"]
+[ext_resource type="AudioStream" uid="uid://xkeoq01xabey" path="res://assets/sounds/middle_pizza.wav" id="4_lmgag"]
+[ext_resource type="AudioStream" uid="uid://bsckhexkgn678" path="res://assets/sounds/bad_pizza.wav" id="5_0d6rw"]
+[ext_resource type="AudioStream" uid="uid://datswtaf7p7vl" path="res://assets/sounds/good_pizza.wav" id="6_0d6rw"]
+
+[node name="Cutscene" type="Control" node_paths=PackedStringArray("good_ending_voiceline", "middle_ending_voiceline", "bad_ending_voiceline")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0d6rw")
+script = ExtResource("2_0d6rw")
+good_ending_voiceline = NodePath("GoodEnding")
+middle_ending_voiceline = NodePath("MidEnding")
+bad_ending_voiceline = NodePath("BadEnding")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.5
+offset_top = -88.0
+offset_right = 166.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 61
+text = " Retry "
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 61
+text = "Main Menu
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = -85.1458
+offset_right = 209.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 61
+
+[node name="GoodEnding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0d6rw")
+volume_db = 7.495
+
+[node name="MidEnding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lmgag")
+volume_db = 7.495
+
+[node name="BadEnding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0d6rw")
+volume_db = 7.495
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

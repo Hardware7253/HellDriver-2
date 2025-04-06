@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c13sbi4hlm4yk"]
+
+[ext_resource type="Script" uid="uid://bxjcvufn58x8b" path="res://scripts/audio_slider.gd" id="1_jkcuc"]
+[ext_resource type="Texture2D" uid="uid://bsscg0tqqa0bg" path="res://assets/sprites/volume_icon.png" id="2_jkcuc"]
+
+[node name="Audio Slider" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkcuc")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 3065
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(50, 40)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_jkcuc")
+
+[node name="VSlider" type="VSlider" parent="CenterContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[connection signal="value_changed" from="CenterContainer/VSlider" to="." method="_on_v_slider_value_changed"]

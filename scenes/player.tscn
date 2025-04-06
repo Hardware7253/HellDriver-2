@@ -1,0 +1,162 @@
+[gd_scene load_steps=20 format=3 uid="uid://bmisyy0r0jatr"]
+
+[ext_resource type="Script" uid="uid://d40sh6oq3ep5" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bffqynj0xyihq" path="res://assets/sprites/SpriteSheetCar2.png" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://bnn2a07qf2up" path="res://scripts/forcefield.gd" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bteblq23tjb7y" path="res://assets/sprites/shield.png" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://o1jm6eqfwocu" path="res://assets/sounds/explosion.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://jf6oqrtv5qwc" path="res://assets/sounds/rebound.wav" id="6_tuyoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(0, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(650, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(1300, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(1950, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(2600, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(3250, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(3900, 0, 650, 231)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(4550, 0, 650, 231)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 48.1664
+
+[sub_resource type="Curve2D" id="Curve2D_dqkch"]
+_data = {
+"points": PackedVector2Array(3.41507, 84.0106, -3.41507, -84.0106, -497, -4, -131.139, 36.8827, 131.139, -36.8827, -302, -212, -96.6295, -11.3443, 96.6295, 11.3443, 143.312, -225.4, -41.6404, -25.6347, 41.6404, 25.6347, 399.643, -142.998, 0, -135.237, 0, 135.237, 552, 80, 53.3635, -8.06975, -53.3635, 8.06975, 309.052, 276.703, 154.361, 57.3731, -154.361, -57.3731, -319, 261, -2.04904, 96.3049, 2.04904, -96.3049, -495, 18)
+}
+point_count = 8
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+radius = 19.6007
+height = 338.016
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dqkch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hit_sound", "rebound_sound")]
+z_index = 5
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_g2els")
+hit_sound = NodePath("HurtSound")
+rebound_sound = NodePath("ReboundSound")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g2els")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.682551
+
+[node name="HitDetector" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/HitDetector"]
+position = Vector2(0, 2)
+polygon = PackedVector2Array(-246, -60, -48, -102, 222, -6, 228, 68, 128, 86, -200, 88, -260, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-176, 64)
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(152, 64)
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-14.9384, -14.5025)
+scale = Vector2(0.574675, 0.538452)
+curve = SubResource("Curve2D_dqkch")
+script = ExtResource("3_qhqgy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-117.788, -235.911)
+rotation = -0.0346708
+progress = 493.525
+v_offset = -0.04
+
+[node name="ForceField" type="Area2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(1.795, 1.795)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/ForceField"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dqkch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/ForceField"]
+z_index = 1
+position = Vector2(-0.189764, 0.0273178)
+scale = Vector2(0.115, 0.115)
+sprite_frames = SubResource("SpriteFrames_qlg0r")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
+
+[node name="ReboundSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -3.05176e-05)
+stream = ExtResource("6_tuyoq")
+
+[connection signal="body_entered" from="AnimatedSprite2D/HitDetector" to="." method="_on_hit_detector_body_entered"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/ForceField" to="." method="_on_force_field_body_entered"]

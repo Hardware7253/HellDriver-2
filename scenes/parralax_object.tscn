@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b20x2r1gg4j6x"]
+
+[ext_resource type="Script" uid="uid://cq3boa2w06w8" path="res://scripts/parralax_object.gd" id="1_m2xmj"]
+
+[node name="ParralaxObject" type="Node2D"]
+z_index = -50
+script = ExtResource("1_m2xmj")

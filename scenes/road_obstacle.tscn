@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cou2npem60ta6"]
+
+[ext_resource type="Script" uid="uid://bvriccd4wssav" path="res://scripts/moving_sprites.gd" id="1_nmfed"]
+[ext_resource type="Texture2D" uid="uid://c8h806e0wd04q" path="res://assets/sprites/GlobSpriteSheet.png" id="2_nmfed"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lawq2"]
+atlas = ExtResource("2_nmfed")
+region = Rect2(0, 0, 250, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qjel"]
+atlas = ExtResource("2_nmfed")
+region = Rect2(250, 0, 250, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrd8"]
+atlas = ExtResource("2_nmfed")
+region = Rect2(500, 0, 250, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srayl"]
+atlas = ExtResource("2_nmfed")
+region = Rect2(750, 0, 250, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pfiew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lawq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qjel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srayl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmfed"]
+radius = 79.0
+
+[node name="RoadObstacle" type="StaticBody2D"]
+z_index = 2
+scale = Vector2(0.28, 0.28)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_nmfed")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -10)
+sprite_frames = SubResource("SpriteFrames_pfiew")
+autoplay = "default"
+frame = 2
+frame_progress = 0.230144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-29, -8)
+shape = SubResource("CircleShape2D_nmfed")

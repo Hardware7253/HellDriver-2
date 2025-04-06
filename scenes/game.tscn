@@ -1,0 +1,219 @@
+[gd_scene load_steps=26 format=3 uid="uid://dbq8wqow3brf"]
+
+[ext_resource type="Script" uid="uid://blmv307ftbni4" path="res://scripts/game_timer.gd" id="1_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bmisyy0r0jatr" path="res://scenes/player.tscn" id="1_lnu2h"]
+[ext_resource type="Theme" uid="uid://d2ku7dnmcq75d" path="res://assets/menu.tres" id="2_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://vnpppwj223b" path="res://scenes/projectile_spawner.tscn" id="2_lbhrr"]
+[ext_resource type="Script" uid="uid://tsoor64cr6tf" path="res://scripts/fade_panel.gd" id="3_dinhu"]
+[ext_resource type="Texture2D" uid="uid://dnkk5127r3sie" path="res://assets/sprites/Pizza.png" id="3_gee14"]
+[ext_resource type="PackedScene" uid="uid://dks1ydrkodf31" path="res://scenes/road spawner.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://dnkyjjmfbyao3" path="res://scenes/pause_menu.tscn" id="3_vtaks"]
+[ext_resource type="PackedScene" uid="uid://b20x2r1gg4j6x" path="res://scenes/parralax_object.tscn" id="6_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bb3w7psopjb0q" path="res://assets/sprites/backgroundBase.png" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://bs5dlf3h8dvo4" path="res://assets/sprites/building_asset.png" id="8_gee14"]
+[ext_resource type="Script" uid="uid://dxegh6etdcm3k" path="res://scripts/health_bar.gd" id="9_0tnpc"]
+
+[sub_resource type="Animation" id="Animation_dinhu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EndCutsceneFadePanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kvpfn"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EndCutsceneFadePanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvuet"]
+_data = {
+&"RESET": SubResource("Animation_dinhu"),
+&"fade_in": SubResource("Animation_kvpfn")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
+atlas = ExtResource("3_gee14")
+region = Rect2(0, 600, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("3_gee14")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = ExtResource("3_gee14")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("3_gee14")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("3_gee14")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("3_gee14")
+region = Rect2(900, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("3_gee14")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("3_gee14")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("3_gee14")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssvqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tnpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtaks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvpfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Game" type="Node2D"]
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+autostart = true
+script = ExtResource("1_kvpfn")
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="EndCutsceneFadePanel" type="Panel" parent="UICanvas" node_paths=PackedStringArray("game_timer")]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kvpfn")
+script = ExtResource("3_dinhu")
+game_timer = NodePath("../../GameTimer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UICanvas/EndCutsceneFadePanel"]
+root_node = NodePath("../../pause_menu")
+libraries = {
+&"": SubResource("AnimationLibrary_kvuet")
+}
+
+[node name="HealthBar" type="AnimatedSprite2D" parent="UICanvas" node_paths=PackedStringArray("player")]
+z_index = -20
+position = Vector2(80, 80)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ssvqc")
+script = ExtResource("9_0tnpc")
+player = NodePath("../../Player")
+
+[node name="pause_menu" parent="UICanvas" node_paths=PackedStringArray("game_timer") instance=ExtResource("3_vtaks")]
+visible = false
+game_timer = NodePath("../../GameTimer")
+
+[node name="Player" parent="." instance=ExtResource("1_lnu2h")]
+position = Vector2(492, 97)
+floor_snap_length = 90.3
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(2, 0)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="ProjectileSpawner" parent="." node_paths=PackedStringArray("player", "projectile_container", "game_timer") instance=ExtResource("2_lbhrr")]
+player = NodePath("../Player")
+projectile_container = NodePath("../ProjectileContainer")
+game_timer = NodePath("../GameTimer")
+
+[node name="RoadSpawner" parent="." node_paths=PackedStringArray("game_timer") instance=ExtResource("3_iywne")]
+game_timer = NodePath("../GameTimer")
+
+[node name="ProjectileContainer" type="Node" parent="."]
+
+[node name="BackGroundCanvas" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Control" type="Control" parent="BackGroundCanvas"]
+z_index = -100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="BackGroundCanvas/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -44.0
+offset_right = 34.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0tnpc")
+expand_mode = 2
+
+[node name="Node2D" parent="BackGroundCanvas" instance=ExtResource("6_u5sy4")]
+z_index = -80
+velocity = Vector2(-100, -30)
+reposition_offset = Vector2(400, -400)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackGroundCanvas/Node2D"]
+position = Vector2(647.525, 1768.66)
+scale = Vector2(0.363545, 0.502946)
+texture = ExtResource("8_gee14")
+
+[connection signal="animation_finished" from="UICanvas/EndCutsceneFadePanel/AnimationPlayer" to="UICanvas/EndCutsceneFadePanel" method="_on_animation_player_animation_finished"]
