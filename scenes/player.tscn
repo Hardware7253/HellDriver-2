@@ -1,53 +1,47 @@
 [gd_scene load_steps=20 format=3 uid="uid://bmisyy0r0jatr"]
 
 [ext_resource type="Script" uid="uid://d40sh6oq3ep5" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bffqynj0xyihq" path="res://assets/sprites/SpriteSheetCar2.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://bnfwl653nfwtv" path="res://assets/sprites/SpriteSheetCar.png" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://bnn2a07qf2up" path="res://scripts/forcefield.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bteblq23tjb7y" path="res://assets/sprites/shield.png" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://o1jm6eqfwocu" path="res://assets/sounds/explosion.wav" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://jf6oqrtv5qwc" path="res://assets/sounds/rebound.wav" id="6_tuyoq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(0, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(650, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(1300, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(1950, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(2600, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(3250, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(3900, 0, 650, 231)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("2_qlg0r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("2_tuyoq")
 region = Rect2(4550, 0, 650, 231)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fjrip")
 }, {
@@ -65,6 +59,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
 }],
 "loop": true,
 "name": &"idle",
@@ -106,7 +106,7 @@ rebound_sound = NodePath("ReboundSound")
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.682551
+frame_progress = 0.184857
 
 [node name="HitDetector" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 6

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dbq8wqow3brf"]
+[gd_scene load_steps=27 format=3 uid="uid://dbq8wqow3brf"]
 
 [ext_resource type="Script" uid="uid://blmv307ftbni4" path="res://scripts/game_timer.gd" id="1_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://bmisyy0r0jatr" path="res://scenes/player.tscn" id="1_lnu2h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bb3w7psopjb0q" path="res://assets/sprites/backgroundBase.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bs5dlf3h8dvo4" path="res://assets/sprites/building_asset.png" id="8_gee14"]
 [ext_resource type="Script" uid="uid://dxegh6etdcm3k" path="res://scripts/health_bar.gd" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://t56h2t2p88g6" path="res://assets/sprites/Foreground.png" id="11_kvuet"]
 
 [sub_resource type="Animation" id="Animation_dinhu"]
 length = 0.001
@@ -162,7 +163,7 @@ visible = false
 game_timer = NodePath("../../GameTimer")
 
 [node name="Player" parent="." instance=ExtResource("1_lnu2h")]
-position = Vector2(492, 97)
+position = Vector2(800, -200)
 floor_snap_length = 90.3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -192,7 +193,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="BackGroundCanvas/Control"]
+[node name="Background" type="TextureRect" parent="BackGroundCanvas/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,6 +205,20 @@ offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_0tnpc")
+expand_mode = 2
+
+[node name="Foreground" type="TextureRect" parent="BackGroundCanvas/Control/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -44.0
+offset_right = 34.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_kvuet")
 expand_mode = 2
 
 [node name="Node2D" parent="BackGroundCanvas" instance=ExtResource("6_u5sy4")]

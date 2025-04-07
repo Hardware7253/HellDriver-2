@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtpbtj2jkrcnt"]
+[gd_scene load_steps=10 format=3 uid="uid://dtpbtj2jkrcnt"]
 
 [ext_resource type="Script" uid="uid://bitdcbftb27as" path="res://scripts/start_cutscene.gd" id="1_55uw1"]
 [ext_resource type="Theme" uid="uid://d2ku7dnmcq75d" path="res://assets/menu.tres" id="1_x4yeb"]
-[ext_resource type="Texture2D" uid="uid://c0pb68ttbmcoj" path="res://assets/sprites/pizza_order.png" id="2_lqrea"]
+[ext_resource type="Texture2D" uid="uid://vvt51xrhysnw" path="res://assets/sprites/PhoneCallFront.png" id="3_o8vx0"]
 [ext_resource type="Script" uid="uid://b56fesywc30it" path="res://scripts/sprite_2d.gd" id="3_x4yeb"]
 [ext_resource type="AudioStream" uid="uid://bsjbmjjiioler" path="res://assets/sounds/phone_call.wav" id="4_o8vx0"]
+[ext_resource type="Texture2D" uid="uid://7p7owgvbaesj" path="res://assets/sprites/PhoneCallBack.png" id="5_x4yeb"]
 
 [sub_resource type="Animation" id="Animation_o8vx0"]
 length = 0.001
@@ -71,20 +72,18 @@ text = " Skip "
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -209.0
-offset_top = -85.1458
 offset_right = 209.0
+offset_bottom = 85.1458
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="Label" type="Label" parent="MarginContainer"]
+z_index = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 61
 text = "Space to jump"
@@ -98,21 +97,36 @@ autoplay = "tutorial"
 
 [node name="Satan" type="TextureRect" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = 121.0
+offset_right = -65.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.964167, 0.91)
+texture = ExtResource("3_o8vx0")
+expand_mode = 1
+script = ExtResource("3_x4yeb")
+
+[node name="Background" type="TextureRect" parent="."]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -328.0
-offset_top = -44.0
-offset_right = 180.0
-offset_bottom = 241.0
+offset_left = -315.0
+offset_top = -83.0
+offset_right = 193.0
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.964167, 0.91)
-texture = ExtResource("2_lqrea")
+texture = ExtResource("5_x4yeb")
 expand_mode = 3
-script = ExtResource("3_x4yeb")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.11
