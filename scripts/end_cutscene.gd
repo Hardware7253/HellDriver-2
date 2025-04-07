@@ -14,7 +14,7 @@ func _ready() -> void:
 	if health > 5:
 		voiceline = good_ending_voiceline
 		subtitle = "Thank you my loyal imp for bringing me this pizza."
-	elif health > 3:
+	elif health > 0:
 		voiceline = middle_ending_voiceline
 		subtitle = "This is of acceptable quality."
 	else:

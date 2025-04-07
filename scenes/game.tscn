@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dbq8wqow3brf"]
+[gd_scene load_steps=28 format=3 uid="uid://dbq8wqow3brf"]
 
 [ext_resource type="Script" uid="uid://blmv307ftbni4" path="res://scripts/game_timer.gd" id="1_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://bmisyy0r0jatr" path="res://scenes/player.tscn" id="1_lnu2h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnkk5127r3sie" path="res://assets/sprites/Pizza.png" id="3_gee14"]
 [ext_resource type="PackedScene" uid="uid://dks1ydrkodf31" path="res://scenes/road spawner.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dnkyjjmfbyao3" path="res://scenes/pause_menu.tscn" id="3_vtaks"]
+[ext_resource type="Script" uid="uid://c1q05nsa54xhv" path="res://scripts/timer_label.gd" id="6_trtic"]
 [ext_resource type="PackedScene" uid="uid://b20x2r1gg4j6x" path="res://scenes/parralax_object.tscn" id="6_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bb3w7psopjb0q" path="res://assets/sprites/backgroundBase.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bs5dlf3h8dvo4" path="res://assets/sprites/building_asset.png" id="8_gee14"]
@@ -125,7 +126,7 @@ animations = [{
 [node name="Game" type="Node2D"]
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 90.0
 one_shot = true
 autostart = true
 script = ExtResource("1_kvpfn")
@@ -157,6 +158,31 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ssvqc")
 script = ExtResource("9_0tnpc")
 player = NodePath("../../Player")
+
+[node name="TimerUI" type="Control" parent="UICanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UICanvas/TimerUI" node_paths=PackedStringArray("game_timer")]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -10.0
+offset_bottom = 83.125
+rotation = 0.00220201
+theme = ExtResource("2_kvpfn")
+theme_override_font_sizes/font_size = 70
+text = "Hell World"
+horizontal_alignment = 2
+justification_flags = 0
+script = ExtResource("6_trtic")
+game_timer = NodePath("../../../GameTimer")
 
 [node name="pause_menu" parent="UICanvas" node_paths=PackedStringArray("game_timer") instance=ExtResource("3_vtaks")]
 visible = false
