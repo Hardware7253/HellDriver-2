@@ -55,21 +55,6 @@ theme = ExtResource("1_x4yeb")
 script = ExtResource("1_55uw1")
 tutorial_label = NodePath("MarginContainer/Label")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Button" type="Button" parent="MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 61
-text = " Skip "
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -97,6 +82,7 @@ autoplay = "tutorial"
 
 [node name="Satan" type="TextureRect" parent="."]
 visible = false
+z_index = -10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,7 +99,7 @@ expand_mode = 1
 script = ExtResource("3_x4yeb")
 
 [node name="Background" type="TextureRect" parent="."]
-z_index = -1
+z_index = -20
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,6 +124,5 @@ stream = ExtResource("4_o8vx0")
 volume_db = 7.495
 autoplay = true
 
-[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="Satan" method="_on_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
