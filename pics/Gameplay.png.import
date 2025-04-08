@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8s12aidwv8gd"
-path="res://.godot/imported/PhoneCallCombo.png-1db5d12afb3b9ba543d6bc8546ce0d27.ctex"
+uid="uid://cuqi0rdxa3eon"
+path="res://.godot/imported/Gameplay.png-be9a981a485861438946f8d946ae374e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/PhoneCallCombo.png"
-dest_files=["res://.godot/imported/PhoneCallCombo.png-1db5d12afb3b9ba543d6bc8546ce0d27.ctex"]
+source_file="res://pics/Gameplay.png"
+dest_files=["res://.godot/imported/Gameplay.png-be9a981a485861438946f8d946ae374e.ctex"]
 
 [params]
 
